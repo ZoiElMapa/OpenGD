@@ -20,7 +20,10 @@ cc.Class({
 
     	///Physics
     	hdir: 0,
-    	vdir: 0
+    	vdir: 0,
+
+    	///Collisions
+    	collidingY: false
     },
 
     onEnable () {
@@ -32,8 +35,24 @@ cc.Class({
 
     },
 
-    onCollisionEnter () {
+    onCollisionEnter (other, self) {
+        var otherAabb = other.world.aabb;
+        var otherPreAabb = other.world.preAabb.clone();
 
+        var selfAabb = self.world.aabb;
+        var selfPreAabb = self.world.preAabb.clone();
+
+        selfPreAabb.y = selfAabb.y;
+        otherPreAabb.y = otherAabb.y;
+
+        if (cc.Intersection.rectRect(selfPreAabb, otherPreAabb)) 
+        {
+            this.collidingY = true;
+        }
+    },
+
+    onCollisionExit() {
+    	this.collidingY = false;
     },
 
     update (dt) {
@@ -44,5 +63,9 @@ cc.Class({
 
     	this.hdir = Math.sign(this.hsp);
     	this.vdir = Math.sign(this.vsp);
+
+    	if(this.collidingY === false) {
+    		this.node.y += (this.vsp * this.gravdir) * -1;
+    	}
     }
 });
