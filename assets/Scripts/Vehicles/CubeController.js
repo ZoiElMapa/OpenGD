@@ -6,6 +6,7 @@ cc.Class({
         spdboost: 1,
         hsp: 10.6,
         jumpspd: 20,
+        angle: 0,
 
         ///initialize physics
         gravdir: 1,
@@ -28,6 +29,20 @@ cc.Class({
 
         ///Many other things
         canclick: true
+    },
+
+    scr_reset_angle(argument0) {
+        if (this.angle > argument0) {
+            this.angle -= 12;
+            if (this.angle < argument0) {
+                this.angle = argument0;
+            }
+        } else if (this.angle < argument0) {
+            this.angle += 12;
+            if (this.angle > argument0) {
+                this.angle = argument0;
+            }
+        }
     },
 
     onEnable () {
