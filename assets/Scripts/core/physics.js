@@ -33,6 +33,7 @@ cc.Class({
 
     onload: function() {
         window.collidingY = this.collidingY;
+        window.vsp = this.vsp;
     },
 
     start () {
@@ -53,13 +54,10 @@ cc.Class({
         {
             this.collidingY = true;
         }
-
-        window.collidingY = this.collidingY;
     },
 
     onCollisionExit() {
     	this.collidingY = false;
-        window.collidingY = this.collidingY;
     },
 
     update (dt) {
@@ -72,7 +70,10 @@ cc.Class({
     	this.vdir = Math.sign(this.vsp);
 
     	if(this.collidingY === false) {
-    		this.node.y += (this.vsp * this.gravdir) * -1;
+    		this.node.y += (window.vsp * this.gravdir) * -1;
     	}
+
+        window.collidingY = this.collidingY;
+        window.vsp = this.vsp;
     }
 });

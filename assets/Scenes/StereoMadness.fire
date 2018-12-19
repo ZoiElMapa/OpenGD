@@ -519,18 +519,18 @@
     "tag": 0,
     "_offset": {
       "__type__": "cc.Vec2",
-      "x": -30,
-      "y": -30
+      "x": -27.9,
+      "y": -28.7
     },
     "_size": {
       "__type__": "cc.Size",
-      "width": 60,
-      "height": 60
+      "width": 77.7,
+      "height": 82.4
     },
     "_id": "69xyoPOcpAZauUeLpRs1/t"
   },
   {
-    "__type__": "21f90N9YC9CEZEs7AsQaOBu",
+    "__type__": "cc33bo6HdRFTIZNhxKTj1Eu",
     "_name": "",
     "_objFlags": 0,
     "node": {
@@ -539,6 +539,7 @@
     "_enabled": true,
     "spdboost": 1,
     "hsp": 0,
+    "jumpspd": 20,
     "gravdir": 1,
     "vsp": 0,
     "spd": 0.1,
@@ -550,7 +551,7 @@
     "mini": 0,
     "vdir": 0,
     "collidingY": false,
-    "_id": "15/g/8PbpMTap/7uQcHb4h"
+    "_id": "07MFOjWQ5MG7MlgIAFPM8Q"
   },
   {
     "__type__": "cc.Node",
