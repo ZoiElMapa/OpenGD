@@ -32,14 +32,14 @@ cc.Class({
     },
 
     scr_reset_angle(argument0) {
-        if (this.angle > argument0) {
-            this.angle -= 12;
-            if (this.angle < argument0) {
-                this.angle = argument0;
-            }
-        } else if (this.angle < argument0) {
+        if (this.angle < argument0) {
             this.angle += 12;
             if (this.angle > argument0) {
+                this.angle = argument0;
+            }
+        } else if (this.angle > argument0) {
+            this.angle -= 12;
+            if (this.angle < argument0) {
                 this.angle = argument0;
             }
         }
@@ -104,6 +104,13 @@ cc.Class({
             this.node.y += (this.vsp * this.gravdir) * -1;
             this.angle += 6;
             this.node.rotation = this.angle;
+
+            if (this.angle > 450 && this.angle < 270) {
+                this.scr_reset_angle(360);
+            } else
+            if (this.angle > 360 && this.angle < 180) {
+                this.scr_reset_angle(270);
+            }
         } else if (this.collidingY && this.clicked) {
             this.node.y += (this.vsp * this.gravdir) * -1;
             this.vsp = -this.jumpspd;
