@@ -102,6 +102,8 @@ cc.Class({
 
         if(this.collidingY === false) {
             this.node.y += (this.vsp * this.gravdir) * -1;
+            this.angle -= 6;
+            this.node.rotation = this.angle;
         } else if (this.collidingY && this.clicked) {
             this.node.y += (this.vsp * this.gravdir) * -1;
             this.vsp = -this.jumpspd;
