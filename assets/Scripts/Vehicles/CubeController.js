@@ -91,6 +91,32 @@ cc.Class({
         this.canclick = false;
     },
 
+    changeAngle() {
+        this.angle += 6;
+        this.node.rotation = this.angle;
+
+        if (this.angle > 450) {
+            this.angle = 90;
+        }
+
+        if (this.angle > 450 && this.angle < 270) {
+            this.scr_reset_angle(360);
+        } else
+        if (this.angle > 360 && this.angle < 180) {
+            this.scr_reset_angle(270);
+        } else
+        if (this.angle > 270 && this.angle < 90) {
+            this.scr_reset_angle(180);
+        } else
+        if (this.angle > 180 && this.angle < 0) {
+            this.scr_reset_angle(90);
+        }
+
+        if (this.angle > 360) {
+            this.angle = 0;
+        }
+    },
+
     update (dt) {
         this.vsp += this.grav;
         if(this.vsp > this.maxvsp) {
@@ -102,15 +128,7 @@ cc.Class({
 
         if(this.collidingY === false) {
             this.node.y += (this.vsp * this.gravdir) * -1;
-            this.angle += 6;
-            this.node.rotation = this.angle;
-
-            if (this.angle > 450 && this.angle < 270) {
-                this.scr_reset_angle(360);
-            } else
-            if (this.angle > 360 && this.angle < 180) {
-                this.scr_reset_angle(270);
-            }
+            this.changeAngle();
         } else if (this.collidingY && this.clicked) {
             this.node.y += (this.vsp * this.gravdir) * -1;
             this.vsp = -this.jumpspd;
