@@ -6,7 +6,7 @@ cc.Class({
     	spdboost: 1,
     	hsp: 10.6,
 
-    	///Physics
+    	///initialize physics
     	gravdir: 1,
     	hsp: 0,
     	vsp: 0,
@@ -16,12 +16,24 @@ cc.Class({
     	grav: 1.5,
     	avoidup: 0,
     	maxvsp: 25,
-    	mini: 0
+    	mini: 0,
+
+    	///Physics
+    	hdir: 0,
+    	vdir: 0
     },
 
     start () {
 
     },
 
-    update (dt) {}
+    update (dt) {
+    	this.vsp += this.grav;
+    	if(this.vsp > this.maxvsp) {
+    		this.vsp = this.maxvsp;
+    	}
+
+    	this.hdir = Math.sign(this.hsp);
+    	this.vdir = Math.sign(this.vsp);
+    }
 });
