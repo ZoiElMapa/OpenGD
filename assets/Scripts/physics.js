@@ -23,7 +23,16 @@ cc.Class({
     	vdir: 0
     },
 
+    onEnable () {
+        cc.director.getCollisionManager().enabled = true;
+        cc.director.getCollisionManager().enabledDebugDraw = true;
+    },
+
     start () {
+
+    },
+
+    onCollisionEnter () {
 
     },
 
