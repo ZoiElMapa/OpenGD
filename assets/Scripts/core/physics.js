@@ -31,6 +31,10 @@ cc.Class({
         cc.director.getCollisionManager().enabledDebugDraw = true;
     },
 
+    onload: function() {
+        window.collidingY = this.collidingY;
+    },
+
     start () {
 
     },
@@ -49,10 +53,13 @@ cc.Class({
         {
             this.collidingY = true;
         }
+
+        window.collidingY = this.collidingY;
     },
 
     onCollisionExit() {
     	this.collidingY = false;
+        window.collidingY = this.collidingY;
     },
 
     update (dt) {
